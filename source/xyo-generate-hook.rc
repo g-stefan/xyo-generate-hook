@@ -1,0 +1,16 @@
+//
+// XYO Generate Hook
+//
+// Copyright (c) 2020 Grigore Stefan <g_stefan@yahoo.com>
+// Created by Grigore Stefan <g_stefan@yahoo.com>
+//
+// MIT License (MIT) <http://opensource.org/licenses/MIT>
+//
+
+#include "xyo-application-version--os-windows-rc.hpp"
+#include "xyo-generate-hook-version.hpp"
+#include "xyo-generate-hook-copyright.hpp"
+
+1  ICON "xyo-generate-hook.ico"
+
+XYO_APPLICATION_VERSION_INFO(XYO_GENERATE_HOOK,"xyo-generate-hook.exe","Hook generator")

@@ -1,0 +1,3 @@
+--exe xyo-generate-hook
+--use-path=source
+--use-project=xyo.static
