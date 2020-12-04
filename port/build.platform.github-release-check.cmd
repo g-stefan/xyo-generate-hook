@@ -5,7 +5,7 @@ rem Created by Grigore Stefan <g_stefan@yahoo.com>
 
 SETLOCAL ENABLEDELAYEDEXPANSION
 
-echo -^> git-release-check xyo-generate-hook
+echo -^> github-release-check xyo-generate-hook
 
 set PROJECT=xyo-generate-hook
 if not exist source\%PROJECT%.version.ini echo Error - no version & exit 1
