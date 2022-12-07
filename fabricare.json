@@ -1,0 +1,14 @@
+{
+	"project": {
+		"name":"xyo-generate-hook",
+		"type":"xyo-cpp",
+		"make" : "exe.static",
+		"SPDX-License-Identifier": "MIT",
+		"sourcePath" : "XYO/GenerateHook",
+		"outputPath" : "output",
+		"dependency" : [
+			"xyo-win",
+			"xyo-win-inject"
+		]
+	}
+}

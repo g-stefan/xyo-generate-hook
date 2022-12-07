@@ -1,18 +1,17 @@
-//
-// XYO Generate Hook
-//
-// Copyright (c) 2020-2022 Grigore Stefan <g_stefan@yahoo.com>
-// Created by Grigore Stefan <g_stefan@yahoo.com>
-//
+// Generate Hook
+// Copyright (c) 2022 Grigore Stefan <g_stefan@yahoo.com>
 // MIT License (MIT) <http://opensource.org/licenses/MIT>
-//
+// SPDX-FileCopyrightText: 2022 Grigore Stefan <g_stefan@yahoo.com>
+// SPDX-License-Identifier: MIT
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
-#include "xyo-generate-hook-copyright.hpp"
-#include "xyo-generate-hook-license.hpp"
-#include "xyo-generate-hook-version.hpp"
+#include <XYO/GenerateHook/Application.hpp>
+#include <XYO/GenerateHook/Copyright.hpp>
+#include <XYO/GenerateHook/License.hpp>
+#include <XYO/GenerateHook/Version.hpp>
 
 FILE *fModuleC;
 char sModuleC[1024];
@@ -25,33 +24,52 @@ char *sReturnType;
 char *sFunctionName;
 char *sFunctionParameters;
 
-int main(int cmd, char *cmds[]) {
-	int k;
+namespace XYO::GenerateHook {
 
-	if (cmd == 2) {
-		if (strcmp(cmds[1], "--license") == 0) {
-			printf("%s", XYOGenerateHook::License::content());
+	void Application::showUsage() {
+		printf("xyo-generate-hook - Generate hook\n");
+		printf("version %s build %s [%s]\n", XYO::GenerateHook::Version::version(), XYO::GenerateHook::Version::build(), XYO::GenerateHook::Version::datetime());
+		printf("%s\n\n", XYO::GenerateHook::Copyright::fullCopyright());
+		printf("\n");
+		printf("Usage:\n");
+		printf("\txyo-generate-hook --license\n");
+		printf("\txyo-generate-hook module callType returnType functionName parameters\n");
+	};
+
+	void Application::showLicense() {		
+		printf("%s%s", GenerateHook::License::licenseHeader(), GenerateHook::License::licenseBody());		
+	};
+
+	void Application::showVersion() {
+		printf("version %s build %s [%s]\n", GenerateHook::Version::version(), GenerateHook::Version::build(), GenerateHook::Version::datetime());
+	};
+
+	void Application::initMemory() {
+		String::initMemory();
+		TDynamicArray<String>::initMemory();
+	};
+
+	int Application::main(int cmdN, char *cmdS[]) {
+		int k;
+
+	if (cmdN == 2) {
+		if (strcmp(cmdS[1], "--license") == 0) {
+			printf("%s", XYO::GenerateHook::License::licenseBody());
 			return 0;
 		};
 		return 1;
 	};
 
-	if (cmd < 6) {
-		printf("xyo-generate-hook - Generate hook\n");
-		printf("version %s build %s [%s]\n", XYOGenerateHook::Version::version(), XYOGenerateHook::Version::build(), XYOGenerateHook::Version::datetime());
-		printf("%s\n\n", XYOGenerateHook::Copyright::fullCopyright());
-		printf("\n");
-		printf("Usage:\n");
-		printf("\txyo-generate-hook --license\n");
-		printf("\txyo-generate-hook module callType returnType functionName parameters\n");
+	if (cmdN < 6) {
+		showUsage();
 		return 1;
 	};
 
-	sModule = cmds[1];
-	sCallType = cmds[2];
-	sReturnType = cmds[3];
-	sFunctionName = cmds[4];
-	sFunctionParameters = cmds[5];
+	sModule = cmdS[1];
+	sCallType = cmdS[2];
+	sReturnType = cmdS[3];
+	sFunctionName = cmdS[4];
+	sFunctionParameters = cmdS[5];
 
 	strcpy(sModuleX, sModule);
 	for (k = 0; sModuleX[k] != 0; ++k) {
@@ -134,4 +152,9 @@ int main(int cmd, char *cmds[]) {
 	};
 
 	return 0;
+	};
 };
+
+#ifndef XYO_GENERATEHOOK_LIBRARY
+XYO_APPLICATION_MAIN(XYO::GenerateHook::Application);
+#endif
