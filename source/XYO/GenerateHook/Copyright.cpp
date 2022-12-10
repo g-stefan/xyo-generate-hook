@@ -13,7 +13,6 @@ namespace XYO::GenerateHook::Copyright {
 	static const char *publisher_ = XYO_GENERATEHOOK_PUBLISHER;
 	static const char *company_ = XYO_GENERATEHOOK_COMPANY;
 	static const char *contact_ = XYO_GENERATEHOOK_CONTACT;
-	static const char *fullCopyright_ = XYO_GENERATEHOOK_FULL_COPYRIGHT;
 
 	const char *copyright() {
 		return copyright_;
@@ -29,10 +28,6 @@ namespace XYO::GenerateHook::Copyright {
 
 	const char *contact() {
 		return contact_;
-	};
-
-	const char *fullCopyright() {
-		return fullCopyright_;
 	};
 
 };
