@@ -11,4 +11,4 @@
 1  ICON "Application.ico"
 
 XYO_APPLICATION_VERSION_INFO(XYO_GENERATEHOOK,"xyo-generate-hook.exe","Hook generator")
-
+XYO_APPLICATION_MANIFEST("Application.manifest")
