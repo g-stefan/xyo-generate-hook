@@ -29,7 +29,7 @@ namespace XYO::GenerateHook {
 	void Application::showUsage() {
 		printf("xyo-generate-hook - Generate hook\n");
 		printf("version %s build %s [%s]\n", XYO::GenerateHook::Version::version(), XYO::GenerateHook::Version::build(), XYO::GenerateHook::Version::datetime());
-		printf("%s\n\n", XYO::GenerateHook::Copyright::copyright().c_str());
+		printf("%s\n\n", XYO::GenerateHook::Copyright::copyright());
 		printf("\n");
 		printf("Usage:\n");
 		printf("\txyo-generate-hook --license\n");
