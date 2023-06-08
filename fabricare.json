@@ -14,7 +14,6 @@
 				]
 			}
 		],
-		"releaseDev" : false,
-		"hasGithub" : true
+		"releaseDev" : false
 	}
 }
